@@ -53,9 +53,10 @@ def build_zynaddsubfx(demo_mode=true)
     stage "Building ZynAddSubFX in #{mode} mode"
     cmd   "mkdir -p build-zynaddsubfx-#{mode}"
     chdir "build-zynaddsubfx-#{mode}"
+    cmd   "mkdir -p usr/local"
     ENV["CPATH"] = "/usr/local/include"
     ENV["LIBRARY_PATH"] = "/usr/local/lib"
-    cmd   "cmake ../zynaddsubfx/ -DGuiModule=zest -DAlsaEnable:BOOL=OFF -DDemoMode=#{demo_mode} -DCMAKE_INSTALL_PREFIX=/usr/local"
+    cmd   "cmake ../zynaddsubfx/ -DGuiModule=zest -DAlsaEnable:BOOL=OFF -DDemoMode=#{demo_mode} -DCMAKE_INSTALL_PREFIX=./usr/local"
     cmd   "make"
     chdir ".."
 end
@@ -92,7 +93,7 @@ def make_package_from_repos(demo_mode=true)
     cmd "echo 'Version #{CurrentVersion}' | sudo tee -a /opt/zyn-fusion/VERSION"
     cmd "echo 'Build on'                  | sudo tee -a /opt/zyn-fusion/VERSION"
     cmd "echo `date`                      | sudo tee -a /opt/zyn-fusion/VERSION"
-    cmd "sudo cp   -a /usr/local/lib/lv2/ZynAddSubFX.lv2presets     /opt/zyn-fusion/"
+    cmd "sudo cp   -a ./build-zynaddsubfx-#{mode}/usr/local/lib/lv2/ZynAddSubFX.lv2presets     /opt/zyn-fusion/"
     cmd "sudo cp   -a ./zynaddsubfx/instruments/banks         /opt/zyn-fusion/"
     cmd "sudo cp      ./mruby-zest-build/package/libzest.so   /opt/zyn-fusion/"
     cmd "sudo cp      ./mruby-zest-build/package/zest         /opt/zyn-fusion/zyn-fusion"
@@ -144,7 +145,7 @@ clean()
 get_zynaddsubfx()
 get_zest()
 
-build_demo_package()
+#build_demo_package()
 build_release_package()
 
 display_reminders()
