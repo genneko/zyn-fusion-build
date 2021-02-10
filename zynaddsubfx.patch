@@ -1,0 +1,13 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b39fe06..843cf6c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -260,7 +260,7 @@ set (BuildOptions_SSE
+ )
+ 
+ set (BuildOptionsBasic
+-    "-std=c++11 -Wno-unused-parameter -O3 -ffast-math -fomit-frame-pointer"
++    "-std=c++11 -Wno-unused-parameter"
+     CACHE STRING "basic X86 compiler options"
+ )
+ STRING(APPEND BuildOptionsBasic " ${BuildOptions_ExtendedWarnings}")

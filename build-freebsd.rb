@@ -29,6 +29,7 @@ def get_zynaddsubfx()
     cmd   "git clone --depth=1 https://github.com/zynaddsubfx/zynaddsubfx"
     chdir "zynaddsubfx"
     cmd   "git submodule update --init"
+    cmd   "git apply ../zynaddsubfx.patch"
     chdir "DPF"
     cmd   "git apply ../../zynaddsubfx-DPF.patch"
     chdir "../.."
