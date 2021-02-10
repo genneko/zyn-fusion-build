@@ -70,7 +70,7 @@ index 0000000..1b8b235
 +ln -s /opt/zyn-fusion/zyn-fusion  /usr/local/bin/
 +
 +echo "...ZynAddSubFX"
-+ln -s /opt/zyn-fusion/zynaddsubfx /usr/local/bin/
++cp /opt/zyn-fusion/zynaddsubfx /usr/local/bin/
 +
 +echo "...Banks"
 +mkdir -p /usr/local/share/zynaddsubfx/
